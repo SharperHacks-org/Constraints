@@ -8,6 +8,8 @@ Licensed under the Apache License, Version 2.0. See [LICENSE.txt](LICENSE.txt).
 
 Contact: joseph@sharperhacks.org
 
+Nuget: https://www.nuget.org/packages/SharperHacks.CoreLibs.Constraints
+
 ### Targets
 - net6.0
 - net7.0
