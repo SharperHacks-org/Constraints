@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Authors>Joseph W Donahue</Authors>
+    <Copyright>Joseph W Donahue &amp; Sharper Hacks LLC (WA)</Copyright>
+    <Company>Sharper Hacks LLC (US-WA)</Company>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Description>Defines classes and methods to verify runtime contraints are met.</Description>
     <AssemblyName>SharperHacks.CoreLibs.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>SharperHacks.CoreLibs.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
@@ -16,15 +22,22 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-    <Version>0.0.0-a.dev.$(USERNAME)</Version>
-    <PackageTags>Constraints</PackageTags>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
-    <AnalysisLevel>latest-recommended</AnalysisLevel>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageTags>Constraints</PackageTags>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0-a.dev.$(USERNAME)</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <Deterministic>true</Deterministic>
+    <Nullable>enable</Nullable>
+    <PathMap>$(MSBuildThisFileDirectory)={SHLLC/CoreLibs/Constraints}/</PathMap>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
