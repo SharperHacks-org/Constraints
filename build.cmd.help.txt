@@ -1,0 +1,27 @@
+build.cmd
+  Runs dotent restore, build, test and pack commands.
+
+Usage:
+  build [clean-all] | [NoTest | NoPack] [clean] release | debug [buildVerbosity <level>] [testVerbosity <level>] ["var=val" ...]
+
+Where:
+  clean-all     Attempts an aggressive removal of all output directories and skips build and packaging steps.
+  clean         Passed along to dotnet commands.
+  NoTest        Skips unit tests. Implies NoPack.
+  NoPack        Skips package generation step.
+  release       Passed along to dotnet commands.
+  debug         Passed along to dotnet commands.
+  buildVerbosity
+  testVerbosiity
+                Translated to --verbosity <level>. See 'dotnet build --help".
+  var=val       Can be a script variable, _buildVerbosity or _testVerbosity,
+                or other variable consumed in project files.
+
+Examples:
+ build (defaults to debug)
+ build release
+ build clean release
+ build clean debug
+ build clean-all
+ build debug _buildVerbosity=normal
+
