@@ -34,7 +34,7 @@
 @if %ErrorLevel% neq 0 (@call :HandleError test %ErrorLevel% & goto :CleanupAndExit)
 
 @if "%_skipPac%" equ "1" goto :CleanupAndExit
-@call :DotNet pack --no-restore --no-build --include-symbols --include-source --configuration %_buildType% --version-suffix %_versionSuffix%
+@call :DotNet pack --no-restore --no-build --include-symbols --include-source --configuration %_buildType% /p:PackageVersion="%_versionPrefix%%_versionSuffix%"
 @if %ErrorLevel% neq 0 (@call :HandleError pack %ErrorLevel%)
 
 @goto :CleanupAndExit
@@ -122,7 +122,7 @@
 
 :SetVersionVariables
     @if not defined _versionPrefix set _versionPrefix=0.0.0
-    @if not defined _versionSuffix set _versionSuffix=a.dev.%USERNAME%
+    @if not defined _versionSuffix set _versionSuffix=-a.dev.%USERNAME%
     @exit /b 0
 
 :ShowHelp

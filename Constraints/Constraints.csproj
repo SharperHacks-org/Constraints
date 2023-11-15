@@ -26,11 +26,14 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <ImplicitUsings>enable</ImplicitUsings>
     <IncludeSymbols>True</IncludeSymbols>
+    <PackageIcon>SHLLC-Logo.128.100.jpg</PackageIcon>
+    <PackageProjectUrl>https://github.com/SharperHacks-org/Constraints</PackageProjectUrl>
     <PackageTags>Constraints</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://ghihub.com/SharperHacks-org/Reflection</RepositoryUrl>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0-a.dev.$(USERNAME)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -49,8 +52,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(SolutionDir)LICENSE.txt" Pack="true" PackagePath="\" />
-    <None Update="$(SolutionDir)LICENSE.txt">
+    <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\Reflection\SHLLC-Logo.128.100.jpg">
+    <Pack>True</Pack>
+    <PackagePath>\</PackagePath>
+    </None>
+    <None Update="$(SolutionDir)LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

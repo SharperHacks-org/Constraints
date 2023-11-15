@@ -1,6 +1,6 @@
 ﻿![SharperHacks logo](SHLLC-Logo.jpg)
 # Constraints Library for .NET
-## Declarative Runtime Constraint Support
+## SharperHacks.CoreLibs.Constraints
 
 Defines classes and methods to verify runtime contraints are met.
 
