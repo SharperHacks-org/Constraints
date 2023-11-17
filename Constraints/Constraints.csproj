@@ -32,7 +32,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://ghihub.com/SharperHacks-org/Reflection</RepositoryUrl>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-    <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 

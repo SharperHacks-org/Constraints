@@ -4,7 +4,7 @@
 
 Defines classes and methods to verify runtime contraints are met.
 
-Licensed under the Apache License, Version 2.0. See [LICENSE.txt](LICENSE.txt).
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
 
 Contact: joseph@sharperhacks.org
 
