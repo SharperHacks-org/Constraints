@@ -18,7 +18,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace SharperHacks.Constraints;
+namespace SharperHacks.CoreLibs.Constraints;
 
 // NOTE: The public version of this code is in the Reflection project.
 //   It is copied here and internalized to avoid having to create a

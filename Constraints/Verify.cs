@@ -22,7 +22,7 @@ using System.Runtime.CompilerServices;
 // ReSharper disable ParameterOnlyUsedForPreconditionCheck.Local
 // ReSharper disable once CheckNamespace
 
-namespace SharperHacks.Constraints;
+namespace SharperHacks.CoreLibs.Constraints;
 
 /// <summary>
 /// The Verify class provides static members that provide always-on run-time verification of expected invariants.

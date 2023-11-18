@@ -21,7 +21,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable once CheckNamespace
-namespace SharperHacks.Constraints.UnitTests
+namespace SharperHacks.CoreLibs.Constraints.UnitTests
 {
     [ExcludeFromCodeCoverage]
     [TestClass]

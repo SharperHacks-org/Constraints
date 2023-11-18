@@ -17,7 +17,7 @@
 // permission of a registered officer of Sharper Hacks LLC (US-WA).
 
 // ReSharper disable once CheckNamespace
-namespace SharperHacks.Constraints
+namespace SharperHacks.CoreLibs.Constraints
 {
     /// <summary>
     /// The static members of the Verify class will throw one of these when 
