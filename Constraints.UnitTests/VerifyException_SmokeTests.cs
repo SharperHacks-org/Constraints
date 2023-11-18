@@ -33,7 +33,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             var ex = new VerifyException();
             Console.WriteLine(ex.Message);
 
-            Assert.IsTrue(ex.Message.Contains("SharperHacks.Constraints.VerifyException"));
+            Assert.IsTrue(ex.Message.Contains("SharperHacks.CoreLibs.Constraints.VerifyException"));
 
             try
             {
@@ -42,7 +42,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             catch (Exception caught)
             {
                 Assert.AreEqual(typeof(VerifyException), caught.GetType());
-                Assert.IsTrue(caught.Message.Contains("SharperHacks.Constraints.VerifyException"));
+                Assert.IsTrue(caught.Message.Contains("SharperHacks.CoreLibs.Constraints.VerifyException"));
             }
         }
 
