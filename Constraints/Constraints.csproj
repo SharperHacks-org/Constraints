@@ -30,7 +30,7 @@
     <PackageProjectUrl>https://github.com/SharperHacks-org/Constraints</PackageProjectUrl>
     <PackageTags>Constraints</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://ghihub.com/SharperHacks-org/Reflection</RepositoryUrl>
+    <RepositoryUrl>https://ghihub.com/SharperHacks-org/Constraints</RepositoryUrl>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
