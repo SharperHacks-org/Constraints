@@ -1,22 +1,8 @@
-// Copyright Joseph W Donahue and Sharper Hacks LLC (US-WA)
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//   http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SharperHacks is a trademark of Sharper Hacks LLC (US-Wa), and may not be
-// applied to distributions of derivative works, without the express written
-// permission of a registered officer of Sharper Hacks LLC (US-WA).
+// Copyright and trademark notices at the end of this file.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using SharperHacks.CoreLibs.IO;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -564,7 +550,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             IsLessThanOrEqualTest("2", "1", true);
             IsLessThanOrEqualTest("1", "1", false);
         }
-#if false // ToDo: We need IO to be published first.
+
         [TestMethod]
         public void FileExists_SmokeTests()
         {
@@ -579,7 +565,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
                 Verify.FileExists(nonExistantFileName);
                 Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception FileNotFoundException.");
             }
-            catch (FileNotFoundException) { }
+            catch (VerifyException) { }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -600,14 +586,15 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
 
             try
             {
-                Verify.FileExists(new FileInfo(nonExistantFileName));
-                Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception FileNotFoundException.");
+                Verify.FileExists(nonExistantFileName);
+                Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception VerifyException.");
             }
-            catch (FileNotFoundException) { }
+            catch (VerifyException) { }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                Assert.Fail($"{nameof(Verify.FileExists)} threw Exception instaead of FileNotFoundException.");
+                Assert.Fail($"{nameof(Verify.FileExists)} threw Exception instaead of VerifyException.");
+
             }
         }
         private void FileExistsTest(
@@ -659,7 +646,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             try
             {
                 lineNumber = Code.LineNumber() + 1;
-                Verify.FileExists(fileInfo);
+                Verify.FileExists(fileInfo.FullName);
             }
             catch (VerifyException ex)
             {
@@ -675,6 +662,23 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
                 Assert.Fail($"{nameof(Verify.FileExists)} failed to throw {nameof(VerifyException)}");
             }
         }
-#endif
     }
 }
+
+// Copyright Joseph W Donahue and Sharper Hacks LLC (US-WA)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// SharperHacks is a trademark of Sharper Hacks LLC (US-Wa), and may not be
+// applied to distributions of derivative works, without the express written
+// permission of a registered officer of Sharper Hacks LLC (US-WA).
