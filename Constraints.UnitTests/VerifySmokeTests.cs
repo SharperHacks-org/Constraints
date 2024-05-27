@@ -597,6 +597,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
 
             }
         }
+
         private void FileExistsTest(
             string filename, 
             TempDirectory tmpDir, 
