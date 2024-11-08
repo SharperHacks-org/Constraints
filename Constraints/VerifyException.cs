@@ -16,7 +16,7 @@ namespace SharperHacks.CoreLibs.Constraints
         public VerifyException(string message) : base(message) {}
 
         /// <inheritdoc cref="Exception"/>
-        public VerifyException(string message, Exception innerException) 
+        public VerifyException(string message, Exception innerException)
             : base(message, innerException) {}
     }
 }

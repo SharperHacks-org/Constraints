@@ -540,7 +540,7 @@ public static class Verify
     /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
     /// <exception cref="VerifyException"></exception>
     public static void FileExists(
-        string pathFileName, 
+        string pathFileName,
         in string? comment = null,
         [CallerMemberName] in string memberName = "",
         [CallerFilePath] in string fileName = "",
