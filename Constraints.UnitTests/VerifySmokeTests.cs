@@ -16,7 +16,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
     {
         #region private
 
-        private void RunStandardAssertions(
+        private static void RunStandardAssertions(
             in string exceptionMessage,
             in int expectedLineNumber,
             in string[]? otherExpectedMessageParts,
@@ -252,7 +252,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             }
         }
 
-        private void IsGreaterThanTest<T>(T left, T right, bool expectException)
+        private static void IsGreaterThanTest<T>(T left, T right, bool expectException)
             where T : IComparable<T>, IComparable
         {
             var exceptionCaught = false;
@@ -279,7 +279,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             Verify.IsTrue(expectException ? exceptionCaught : !exceptionCaught);
         }
 
-        private void IsGreaterThanOrEqualTest<T>(T left, T right, bool expectException)
+        private static void IsGreaterThanOrEqualTest<T>(T left, T right, bool expectException)
             where T : IComparable<T>
         {
             var exceptionCaught = false;
@@ -306,7 +306,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             Verify.IsTrue(expectException ? exceptionCaught : !exceptionCaught);
         }
 
-        private void IsLessThanOrEqualTest<T>(T left, T right, bool expectException)
+        private static void IsLessThanOrEqualTest<T>(T left, T right, bool expectException)
             where T : IComparable<T>
         {
             var exceptionCaught = false;
@@ -362,7 +362,7 @@ namespace SharperHacks.CoreLibs.Constraints.UnitTests
             }
         }
 
-        private void IsLessThanTest<T>(T left, T right, bool expectException)
+        private static void IsLessThanTest<T>(T left, T right, bool expectException)
             where T : IComparable<T>
         {
             var exceptionCaught = false;
