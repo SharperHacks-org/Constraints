@@ -1,24 +1,23 @@
 // Copyright and trademark notices at the end of this file.
 
 // ReSharper disable once CheckNamespace
-namespace SharperHacks.CoreLibs.Constraints
+namespace SharperHacks.CoreLibs.Constraints;
+
+/// <summary>
+/// The static members of the Verify class will throw one of these when 
+/// the specified constraint is not met.
+/// </summary>
+public class VerifyException : Exception
 {
-    /// <summary>
-    /// The static members of the Verify class will throw one of these when 
-    /// the specified constraint is not met.
-    /// </summary>
-    public class VerifyException : Exception
-    {
-        /// <inheritdoc cref="Exception"/>
-        public VerifyException() {}
+    /// <inheritdoc cref="Exception"/>
+    public VerifyException() {}
 
-        /// <inheritdoc cref="Exception"/>
-        public VerifyException(string message) : base(message) {}
+    /// <inheritdoc cref="Exception"/>
+    public VerifyException(string message) : base(message) {}
 
-        /// <inheritdoc cref="Exception"/>
-        public VerifyException(string message, Exception innerException)
-            : base(message, innerException) {}
-    }
+    /// <inheritdoc cref="Exception"/>
+    public VerifyException(string message, Exception innerException)
+        : base(message, innerException) {}
 }
 
 // Copyright Joseph W Donahue and Sharper Hacks LLC (US-WA)

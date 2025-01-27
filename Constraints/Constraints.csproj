@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Authors>Joseph W Donahue</Authors>
@@ -25,7 +25,7 @@
     <PackageIcon>SHLLC-Logo.128.100.jpg</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/SharperHacks-org/$(MSBuildProjectName)</PackageProjectUrl>
-    <PackageReadMeFile>README.md</PackageReadMeFile>
+    <PackageReadMeFile>Package-ReadMe.md</PackageReadMeFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageTags>Constraints</PackageTags>
     <RepositoryType>git</RepositoryType>
@@ -53,10 +53,6 @@
 
   <ItemGroup>
     <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="\" />
-    <None Include="..\..\Reflection\SHLLC-Logo.128.100.jpg">
-    <Pack>True</Pack>
-    <PackagePath>\</PackagePath>
-    </None>
     <None Update="$(SolutionDir)LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

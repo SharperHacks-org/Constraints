@@ -1,5 +1,6 @@
 // Copyright and trademark notices at the end of this file.
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace SharperHacks.CoreLibs.Constraints;
@@ -11,6 +12,7 @@ namespace SharperHacks.CoreLibs.Constraints;
 /// <summary>
 /// Static functions for line number, source file path, member name, etc.
 /// </summary>
+[ExcludeFromCodeCoverage]
 internal static class Code
 {
     /// <summary>
