@@ -22,10 +22,9 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IncludeSymbols>True</IncludeSymbols>
-    <PackageIcon>SHLLC-Logo.128.100.jpg</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/SharperHacks-org/$(MSBuildProjectName)</PackageProjectUrl>
-    <PackageReadMeFile>Package-ReadMe.md</PackageReadMeFile>
+    <PackageReadMeFile>$(ProjectDir)/Package-ReadMe.md</PackageReadMeFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageTags>Constraints</PackageTags>
     <RepositoryType>git</RepositoryType>
@@ -64,10 +63,19 @@
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(ProjectDir)Package-ReadMe.md" Pack="true" PackagePath="\" />
+    <None Update="$(ProjectDir)Packat-ReadMe.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(SolutionDir)SHLLC-Logo.jpg" Pack="true" PackagePath="\" />
     <None Update="$(SolutionDir)SHLLC-Logo.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Package-ReadMe.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
