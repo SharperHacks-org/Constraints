@@ -11,6 +11,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Deterministic>true</Deterministic>
-    <PathMap>$(SolutionDir)={SHLLC/CoreLibs/$(MSBuildSolutionName)}/</PathMap>
+    <PathMapRoot>SHLLC/CoreLibs</PathMapRoot>
   </PropertyGroup>
 </Project>
