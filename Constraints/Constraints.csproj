@@ -33,7 +33,6 @@
     <Deterministic>true</Deterministic>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PathMap>$(MSBuildThisFileDirectory)={SHLLC/CoreLibs/Constraints}/</PathMap>
     <NuGetAuditMode>all</NuGetAuditMode>
   </PropertyGroup>
 
