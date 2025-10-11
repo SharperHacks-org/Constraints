@@ -23,9 +23,9 @@ public class VerifySmokeTests
         [CallerMemberName] in string memberName = "",
         [CallerFilePath] in string fileName = "")
     {
-        Assert.IsTrue(exceptionMessage.Contains($"@ {memberName}"));
-        Assert.IsTrue(exceptionMessage.Contains(fileName));
-        Assert.IsTrue(exceptionMessage.Contains($"({expectedLineNumber})"));
+        Assert.Contains($"@ {memberName}", exceptionMessage);
+        Assert.Contains(fileName, exceptionMessage);
+        Assert.Contains($"({expectedLineNumber})", exceptionMessage);
 
         if (otherExpectedMessageParts is null) return;
 
@@ -402,11 +402,11 @@ public class VerifySmokeTests
         {
             var exceptionMessage = ex.ToString();
             Console.WriteLine(exceptionMessage);
-            Assert.IsTrue(exceptionMessage.Contains(Verify.AreNotEqualExceptionPrefix));
-            Assert.IsTrue(exceptionMessage.Contains($"@ {nameof(AreNotEqualTest_ValuesAreEqual)}"));
-            Assert.IsTrue(exceptionMessage.Contains("VerifySmokeTests.cs"));
-            Assert.IsTrue(exceptionMessage.Contains($"({lineNumber})"));
-            Assert.IsTrue(exceptionMessage.Contains(comment));
+            Assert.Contains(Verify.AreNotEqualExceptionPrefix, exceptionMessage);
+            Assert.Contains($"@ {nameof(AreNotEqualTest_ValuesAreEqual)}", exceptionMessage);
+            Assert.Contains("VerifySmokeTests.cs", exceptionMessage);
+            Assert.Contains($"({lineNumber})", exceptionMessage);
+            Assert.Contains(comment, exceptionMessage);
             return;
         }
 

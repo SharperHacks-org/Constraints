@@ -17,7 +17,7 @@ public class VerifyExceptionSmokeTests //: TestBase
         var ex = new VerifyException();
         Console.WriteLine(ex.Message);
 
-        Assert.IsTrue(ex.Message.Contains("SharperHacks.CoreLibs.Constraints.VerifyException"));
+        Assert.Contains("SharperHacks.CoreLibs.Constraints.VerifyException", ex.Message);
 
         try
         {
@@ -26,7 +26,7 @@ public class VerifyExceptionSmokeTests //: TestBase
         catch (Exception caught)
         {
             Assert.AreEqual(typeof(VerifyException), caught.GetType());
-            Assert.IsTrue(caught.Message.Contains("SharperHacks.CoreLibs.Constraints.VerifyException"));
+            Assert.Contains("SharperHacks.CoreLibs.Constraints.VerifyException", caught.Message);
         }
     }
 
@@ -38,7 +38,7 @@ public class VerifyExceptionSmokeTests //: TestBase
         var ex = new VerifyException(msg);
         Console.WriteLine(ex.Message);
 
-        Assert.IsTrue(ex.Message.Contains(msg));
+        Assert.Contains(msg, ex.Message);
 
         try
         {
@@ -46,7 +46,7 @@ public class VerifyExceptionSmokeTests //: TestBase
         }
         catch (VerifyException caught)
         {
-            Assert.IsTrue(caught.Message.Contains(msg));
+            Assert.Contains(msg, caught.Message);
         }
     }
 
@@ -59,12 +59,12 @@ public class VerifyExceptionSmokeTests //: TestBase
         var innerEx = new VerifyException(innerMsg);
         Console.WriteLine(innerEx.Message);
 
-        Assert.IsTrue(innerEx.Message.Contains(innerMsg));
+        Assert.Contains(innerMsg, innerEx.Message);
 
         var outerEx = new VerifyException(outerMsg, innerEx);
         Assert.IsNotNull(outerEx);
         Assert.IsTrue(outerEx.InnerException != null && outerEx.InnerException.Message.Contains(innerMsg));
-        Assert.IsTrue(outerEx.Message.Contains(outerMsg));
+        Assert.Contains(outerMsg, outerEx.Message);
 
         try
         {
@@ -74,9 +74,9 @@ public class VerifyExceptionSmokeTests //: TestBase
         {
             Assert.AreEqual(typeof(VerifyException), caught.GetType());
             Assert.IsNotNull(caught.InnerException);
-            Assert.IsTrue(outerEx.InnerException.Message.Contains(innerMsg));
+            Assert.Contains(innerMsg, outerEx.InnerException.Message);
             Assert.AreEqual(typeof(VerifyException), caught.InnerException!.GetType());
-            Assert.IsTrue(caught.Message.Contains(outerMsg));
+            Assert.Contains(outerMsg, caught.Message);
         }
     }
 }
