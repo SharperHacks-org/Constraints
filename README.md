@@ -1,8 +1,8 @@
-﻿![SharperHacks logo](SHLLC-Logo.jpg)
+![SharperHacks logo](SHLLC-Logo.jpg)
 # Constraints Library for .NET
 ## SharperHacks.CoreLibs.Constraints
 
-Defines classes and methods to verify runtime contraints are met.
+Defines classes and methods to verify runtime constraints are met.
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
 
@@ -21,8 +21,8 @@ Nuget: https://www.nuget.org/packages/SharperHacks.CoreLibs.Constraints
 A static class, containing static methods to verify constraints. Unlike Assert,
 these methods are compiled and fully functional in production as well as DEBUG
 code. All methods include caller member name, caller file path and caller line
-number in the diagnostic message suppled to the VerifyException that is thrown when
-constraints are not met.
+number in the diagnostic message supplied to the VerifyException that is thrown 
+when constraints are not met.
 
 ##### Examples:
 ```
