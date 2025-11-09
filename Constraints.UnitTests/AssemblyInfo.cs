@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("1a1c9ee3-2e94-4a4d-9fa4-9db9b9e776cf")]
 
-[assembly: Parallelize]
+[assembly: Parallelize(Scope = ExecutionScope.ClassLevel)]

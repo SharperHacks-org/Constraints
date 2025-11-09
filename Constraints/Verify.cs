@@ -48,7 +48,12 @@ public static class Verify
     public const string ExpressionNotTrueExceptionPrefix = "Verify failed, expression result not true";
 
     /// <summary>
-    /// The FileExists methods throw VerifyException that contains this string.
+    /// The DirectoryExists methods, throw VerifyException that contains this string.
+    /// </summary>
+    public const string DirectoryNotFoundExceptionPrefix = "Verify failed, directory not found.";
+
+    /// <summary>
+    /// The FileExists methods, throw VerifyException that contains this string.
     /// </summary>
     public const string FileNotFoundExceptionPrefix = "Verify failed, file not found";
 
@@ -227,6 +232,134 @@ public static class Verify
         foreach ( var item in array! )
         {
             IsNotNullOrEmpty(item, comment, memberName, fileName, lineNumber);
+        }
+    }
+
+    /// <summary>
+    /// Throw VerifyException if directory does not exist
+    /// </summary>
+    /// <param name="dirName"></param>
+    /// <param name="comment">
+    /// Any additional information to tag onto the exception message. May be null or empty.
+    /// </param>
+    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
+    /// <param name="srcFileName">Automatically filled in by CallerFilePath.</param>
+    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
+    /// <exception cref="VerifyException"></exception>
+    public static void DirectoryExists(
+        string dirName,
+        in string? comment = null,
+        [CallerMemberName] in string memberName = "",
+        [CallerFilePath] in string srcFileName = "",
+        [CallerLineNumber] in int lineNumber = 0
+        )
+    {
+        if (!Directory.Exists(dirName))
+        {
+            throw new VerifyException(
+                    BuildExceptionMessage(
+                            DirectoryNotFoundExceptionPrefix,
+                            comment,
+                            memberName,
+                            srcFileName,
+                            lineNumber
+                            ));
+        }
+    }
+
+    /// <summary>
+    /// Throw VerifyException if directory does not exist
+    /// </summary>
+    /// <param name="dirInfo"></param>
+    /// <param name="comment">
+    /// Any additional information to tag onto the exception message. May be null or empty.
+    /// </param>
+    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
+    /// <param name="srcFileName">Automatically filled in by CallerFilePath.</param>
+    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
+    /// <exception cref="VerifyException"></exception>
+    public static void DirectoryExists(
+        DirectoryInfo dirInfo,
+        in string? comment = null,
+        [CallerMemberName] in string memberName = "",
+        [CallerFilePath] in string srcFileName = "",
+        [CallerLineNumber] in int lineNumber = 0
+        )
+    {
+        if (!dirInfo.Exists)
+        {
+            throw new VerifyException(
+                    BuildExceptionMessage(
+                            DirectoryNotFoundExceptionPrefix,
+                            comment,
+                            memberName,
+                            srcFileName,
+                            lineNumber
+                            ));
+        }
+    }
+
+    /// <summary>
+    /// Throw VerifyException if file does not exist.
+    /// </summary>
+    /// <param name="pathFileName"></param>
+    /// <param name="comment">
+    /// Any additional information to tag onto the exception message. May be null or empty.
+    /// </param>
+    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
+    /// <param name="srcFileName">Automatically filled in by CallerFilePath.</param>
+    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
+    /// <exception cref="VerifyException"></exception>
+    public static void FileExists(
+        string pathFileName,
+        in string? comment = null,
+        [CallerMemberName] in string memberName = "",
+        [CallerFilePath] in string srcFileName = "",
+        [CallerLineNumber] in int lineNumber = 0
+        )
+    {
+        if (!File.Exists(pathFileName))
+        {
+            throw new VerifyException(
+                    BuildExceptionMessage(
+                            FileNotFoundExceptionPrefix,
+                            comment,
+                            memberName,
+                            srcFileName,
+                            lineNumber
+                            ));
+        }
+    }
+
+    /// <summary>
+    /// Throw FileNotFoundException if file does not exist.
+    /// </summary>
+    /// <param name="fileInfo"></param>
+    /// <param name="comment">
+    /// Any additional information to tag onto the exception message. May be null or empty.
+    /// </param>
+    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
+    /// <param name="fileName">Automatically filled in by CallerFilePath.</param>
+    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
+    /// <exception cref="VerifyException"></exception>
+    public static void FileExists(
+        FileInfo fileInfo,
+        in string? comment,
+        [CallerMemberName] in string memberName = "",
+        [CallerFilePath] in string fileName = "",
+        [CallerLineNumber] in int lineNumber = 0
+        )
+    {
+        if (!fileInfo.Exists)
+        {
+            throw new VerifyException(
+                    BuildExceptionMessage(
+                            FileNotFoundExceptionPrefix,
+                            comment,
+                            memberName,
+                            fileName,
+                            lineNumber
+                            ));
         }
     }
 
@@ -527,70 +660,6 @@ public static class Verify
                             fileName,
                             lineNumber
                             ));
-
-    /// <summary>
-    /// Throw VerifyException if file does not exist.
-    /// </summary>
-    /// <param name="pathFileName"></param>
-    /// <param name="comment">
-    /// Any additional information to tag onto the exception message. May be null or empty.
-    /// </param>
-    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
-    /// <param name="fileName">Automatically filled in by CallerFilePath.</param>
-    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
-    /// <exception cref="VerifyException"></exception>
-    public static void FileExists(
-        string pathFileName,
-        in string? comment = null,
-        [CallerMemberName] in string memberName = "",
-        [CallerFilePath] in string fileName = "",
-        [CallerLineNumber] in int lineNumber = 0
-        )
-    {
-        if (!File.Exists(pathFileName))
-        {
-            throw new VerifyException(
-                    BuildExceptionMessage(
-                            FileNotFoundExceptionPrefix,
-                            comment,
-                            memberName,
-                            fileName,
-                            lineNumber
-                            ));
-        }
-    }
-
-    /// <summary>
-    /// Throw FileNotFoundException if file does not exist.
-    /// </summary>
-    /// <param name="fileInfo"></param>
-    /// <param name="comment">
-    /// Any additional information to tag onto the exception message. May be null or empty.
-    /// </param>
-    /// <param name="memberName">Automatically filled in by CallerMemberName.</param>
-    /// <param name="fileName">Automatically filled in by CallerFilePath.</param>
-    /// <param name="lineNumber">Automatically filled in by CallerLineNumber.</param>
-    /// <exception cref="VerifyException"></exception>
-    public static void FileExists(
-        FileInfo fileInfo,
-        in string? comment,
-        [CallerMemberName] in string memberName = "",
-        [CallerFilePath] in string fileName = "",
-        [CallerLineNumber] in int lineNumber = 0
-        )
-    {
-        if (!fileInfo.Exists)
-        {
-            throw new VerifyException(
-                    BuildExceptionMessage(
-                            FileNotFoundExceptionPrefix,
-                            comment,
-                            memberName,
-                            fileName,
-                            lineNumber
-                            ));
-        }
-    }
 
     #region Private
 

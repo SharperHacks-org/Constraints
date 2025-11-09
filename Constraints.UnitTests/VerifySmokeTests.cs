@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharperHacks.CoreLibs.IO;
 
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
@@ -552,6 +553,60 @@ public class VerifySmokeTests
     }
 
     [TestMethod]
+    public void DirectoryExists_SmokeTests()
+    {
+        using var tmpDir = new TempDirectory(nameof(FileExists_SmokeTests));
+
+        var nonExistantDirName = Guid.NewGuid().ToString();
+
+        try
+        {
+            Verify.DirectoryExists(nonExistantDirName);
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} failed to throw exception DirectoryNotFoundException.");
+        }
+        catch (VerifyException ex) 
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} threw Exception instead of DirectoryNotFoundException.");
+        }
+
+        try
+        {
+            Verify.DirectoryExists(string.Empty);
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} failed to throw exception VerifyException.");
+        }
+        catch (VerifyException ex)
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} threw Exception instead of VerifyException.");
+        }
+
+        try
+        {
+            Verify.FileExists(nonExistantDirName);
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} failed to throw exception VerifyException.");
+        }
+        catch (VerifyException ex) 
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} threw Exception instead of VerifyException.");
+
+        }
+    }
+
+    [TestMethod]
     public void FileExists_SmokeTests()
     {
         using var tmpDir = new TempDirectory(nameof(FileExists_SmokeTests));
@@ -565,7 +620,10 @@ public class VerifySmokeTests
             Verify.FileExists(nonExistantFileName);
             Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception FileNotFoundException.");
         }
-        catch (VerifyException) { }
+        catch (VerifyException ex)
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
@@ -577,7 +635,10 @@ public class VerifySmokeTests
             Verify.FileExists(string.Empty);
             Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception VerifyException.");
         }
-        catch (VerifyException) { }
+        catch (VerifyException ex)
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
@@ -589,7 +650,10 @@ public class VerifySmokeTests
             Verify.FileExists(nonExistantFileName);
             Assert.Fail($"{nameof(Verify.FileExists)} failed to throw exception VerifyException.");
         }
-        catch (VerifyException) { }
+        catch (VerifyException ex)
+        {
+            Console.WriteLine($"Exception thrown (expected): {ex.ToString()}");
+        }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
@@ -598,9 +662,72 @@ public class VerifySmokeTests
         }
     }
 
+    private void DirectoryExistsTest(
+        string directoryName,
+        bool expectException)
+    {
+        var expectedSegments = new[]
+        {
+            Verify.DirectoryNotFoundExceptionPrefix,
+            nameof(Verify.DirectoryExists),
+            directoryName,
+        };
+
+        var lineNumber = -1;
+        try
+        {
+            lineNumber = Code.LineNumber() + 1;
+            Verify.DirectoryExists(directoryName);
+        }
+        catch (VerifyException ex)
+        {
+            var exceptionMessage = ex.ToString();
+            Console.WriteLine(exceptionMessage);
+            Assert.IsTrue(expectException);
+            RunStandardAssertions(exceptionMessage, lineNumber, expectedSegments);
+            return;
+        }
+
+        if (expectException)
+        {
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} failed to throw {nameof(VerifyException)}");
+        }
+    }
+
+    private void DirectoryExistsTest(
+        DirectoryInfo dirInfo,
+        bool expectException)
+    {
+        var expectedSegments = new[]
+        {
+            Verify.DirectoryNotFoundExceptionPrefix,
+            nameof(Verify.DirectoryExists),
+            dirInfo.FullName,
+        };
+
+        var lineNumber = -1;
+        try
+        {
+            lineNumber = Code.LineNumber() + 1;
+            Verify.DirectoryExists(dirInfo.FullName);
+        }
+        catch (VerifyException ex)
+        {
+            var exceptionMessage = ex.ToString();
+            Console.WriteLine(exceptionMessage);
+            Assert.IsTrue(expectException);
+            RunStandardAssertions(exceptionMessage, lineNumber, expectedSegments);
+            return;
+        }
+
+        if (expectException)
+        {
+            Assert.Fail($"{nameof(Verify.DirectoryExists)} failed to throw {nameof(VerifyException)}");
+        }
+    }
+
     private void FileExistsTest(
         string filename, 
-        TempDirectory tmpDir, 
         bool expectException)
     {
         var expectedSegments = new[]
@@ -633,7 +760,6 @@ public class VerifySmokeTests
 
     private void FileExistsTest(
         FileInfo fileInfo,
-        TempDirectory tmpDir,
         bool expectException)
     {
         var expectedSegments = new[]
