@@ -19,6 +19,7 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageIcon>SHLLC-Logo.128.100.png</PackageIcon>
     <PackageProjectUrl>https://github.com/SharperHacks-org/$(MSBuildProjectName)</PackageProjectUrl>
     <PackageReadMeFile>README.md</PackageReadMeFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -72,8 +73,8 @@
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="$(SolutionDir)*.jpg" Pack="true" PackagePath="\" />
-    <None Update="$(SolutionDir)*.jpg">
+    <None Include="$(SolutionDir)*.png" Pack="true" PackagePath="\" />
+    <None Update="$(SolutionDir)*.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
