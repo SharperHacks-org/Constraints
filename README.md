@@ -1,5 +1,7 @@
 ![SharperHacks logo](https://raw.githubusercontent.com/SharperHacks-org/Assets/main/Images/SHLLC-Logo.png)
-# Constraints Library for .NET
+# THIS PROJECT HAS BEEN MOVED TO [codeberg.org](https://codeberg.org/SharperHacks-org/Constraints).
+# THIS PROJECT WILL BE DELETED SOON.
+## Constraints Library for .NET
 ## SharperHacks.CoreLibs.Constraints
 
 Defines classes and methods to verify runtime constraints are met.
@@ -33,4 +35,5 @@ when constraints are not met.
 #### VerifyException
 The exception class that is thrown by Verify methods when a constraint is not met.
 Provides a consitently formatted exception string for all constraint failures.
+
 
